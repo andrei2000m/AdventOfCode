@@ -29,6 +29,13 @@ enum class Directions(val move: Point) {
         EAST -> SOUTH
         WEST -> NORTH
     }
+
+    fun turn90Counter(): Directions = when (this) {
+        NORTH -> WEST
+        SOUTH -> EAST
+        EAST -> NORTH
+        WEST -> SOUTH
+    }
 }
 
 fun Any?.println() = println(this)
