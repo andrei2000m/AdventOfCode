@@ -1,7 +1,5 @@
 package year2024.day3
 
-import println
-
 fun solveTask1(input: String): String {
     return Regex("mul\\((\\d{1,3}),(\\d{1,3})\\)").findAll(input).map { it.destructured }.fold(0L) { sum, (e1, e2) ->
         sum + e1.toLong() * e2.toLong()

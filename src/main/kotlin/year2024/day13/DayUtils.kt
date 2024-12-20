@@ -1,8 +1,6 @@
 package year2024.day13
 
-import println
 import split
-import java.math.BigDecimal
 import java.math.BigInteger
 
 fun solveTask1(input: String): String {

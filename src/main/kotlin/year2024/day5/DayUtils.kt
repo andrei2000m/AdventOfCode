@@ -1,7 +1,5 @@
 package year2024.day5
 
-import println
-
 fun solveTask1(input: String): String {
     val (rules, updates) = input.split(Regex("\\r?\\n\\r?\\n")).map(String::lines)
     val ruleMap = rules.fold(mapOf<String, List<String>>()) { map, rule ->

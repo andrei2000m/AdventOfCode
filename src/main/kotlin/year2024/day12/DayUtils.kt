@@ -7,7 +7,6 @@ import Directions.SOUTH
 import Directions.WEST
 import Point
 import plus
-import println
 
 fun solveTask1(input: String): String {
     val parsedInput = input.lines()

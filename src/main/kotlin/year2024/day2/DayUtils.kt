@@ -1,7 +1,5 @@
 package year2024.day2
 
-import println
-
 fun solveTask1(input: String): String {
     return input.lines().map { line -> line.split(" ").map { it.toInt() } }.fold(0) { sum, line ->
         sum + if (line.isSafe()) 1 else 0

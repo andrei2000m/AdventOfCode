@@ -2,7 +2,6 @@ package year2024.day14
 
 import Point
 import plus
-import println
 import split
 import kotlin.math.ceil
 import kotlin.math.floor
@@ -40,7 +39,6 @@ fun solveTask2(input: String, xSize: Int = 101, ySize: Int = 103): String {
 }
 
 tailrec fun generateMovement(index: Int, map: List<Pair<Pair<Int, Int>, Pair<Int, Int>>>, xSize: Int, ySize: Int) {
-    index.println()
     val positions = map.map { (p, v) -> move(p, v, index, xSize, ySize) }
     if (positions.any { position ->
             (positions.contains(Pair(position.first + 1, position.second)) &&
