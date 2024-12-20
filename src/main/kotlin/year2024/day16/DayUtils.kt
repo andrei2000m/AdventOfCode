@@ -8,7 +8,6 @@ import Directions.WEST
 import Point
 import PriorityQueue
 import plus
-import println
 
 fun solveTask1(input: String): String {
     val grid = input.lines()

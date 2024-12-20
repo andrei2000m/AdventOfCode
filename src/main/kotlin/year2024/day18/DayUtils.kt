@@ -4,7 +4,6 @@ import Directions
 import Point
 import PriorityQueue
 import plus
-import println
 
 fun solveTask1(input: String, simulatedBytes: Int = 1024, maxSize: Int = 70): String {
     val coordsList = input.lines().map { it.split(',') }
