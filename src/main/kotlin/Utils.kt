@@ -9,6 +9,10 @@ fun String.split(separators: List<Regex>): List<String> = separators.fold(listOf
     strings.flatMap { it.split(separator) }
 }
 
+fun <T> List<T>.toPair() = Pair(this[0], this[1])
+
+fun String.toLongOrZero() = try { this.toLong() } catch (e: NumberFormatException) { 0 }
+
 typealias Point = Pair<Int, Int>
 
 operator fun Point.plus(other: Point): Point = Point(this.first + other.first, this.second + other.second)
