@@ -1,10 +1,10 @@
 package year2024.day16
 
-import Directions
-import Directions.EAST
-import Directions.NORTH
-import Directions.SOUTH
-import Directions.WEST
+import Directions4
+import Directions4.EAST
+import Directions4.NORTH
+import Directions4.SOUTH
+import Directions4.WEST
 import Point
 import PriorityQueue
 import plus
@@ -12,7 +12,7 @@ import plus
 fun solveTask1(input: String): String {
     val grid = input.lines()
     val (endPosition, queue) = grid.foldIndexed(Pair(Point(0, 0),
-        PriorityQueue<Pair<Point, Pair<Int, Directions>>>(listOf()) { a, b -> if (a.second.first < b.second.first) -1 else if (a.second.first == b.second.first) 0 else 1 }))
+        PriorityQueue<Pair<Point, Pair<Int, Directions4>>>(listOf()) { a, b -> if (a.second.first < b.second.first) -1 else if (a.second.first == b.second.first) 0 else 1 }))
     { i, pair, line ->
         line.foldIndexed(pair) { j, (endPos, queue), char ->
             when (char) {
@@ -26,7 +26,7 @@ fun solveTask1(input: String): String {
     return dijkstra(queue, endPosition).toString()
 }
 
-tailrec fun dijkstra(queue: PriorityQueue<Pair<Point, Pair<Int, Directions>>>, endPosition: Point): Int {
+tailrec fun dijkstra(queue: PriorityQueue<Pair<Point, Pair<Int, Directions4>>>, endPosition: Point): Int {
     val (currentPosition, currentInfo) = queue.peek()
     val (currentScore, currentDirection) = currentInfo
     return if (currentPosition == endPosition) return currentScore
@@ -54,8 +54,8 @@ tailrec fun dijkstra(queue: PriorityQueue<Pair<Point, Pair<Int, Directions>>>, e
 fun solveTask2(input: String): String {
     val grid = input.lines()
     val (endPosition, queue, map) = grid.foldIndexed(Triple(Point(0, 0),
-        PriorityQueue<Pair<Point, Pair<Int, Directions>>>(listOf()) { a, b -> if (a.second.first < b.second.first) -1 else if (a.second.first == b.second.first) 0 else 1 },
-        mapOf<Pair<Point, Directions>, Pair<Int, Set<Pair<Point, Directions>>>>()))
+        PriorityQueue<Pair<Point, Pair<Int, Directions4>>>(listOf()) { a, b -> if (a.second.first < b.second.first) -1 else if (a.second.first == b.second.first) 0 else 1 },
+        mapOf<Pair<Point, Directions4>, Pair<Int, Set<Pair<Point, Directions4>>>>()))
     { i, triple, line ->
         line.foldIndexed(triple) { j, (endPos, queue, map), char ->
             when (char) {
@@ -75,7 +75,7 @@ fun solveTask2(input: String): String {
     return dijkstra2(queue, endPosition, map).countPoints(setOf(Pair(endPosition, EAST),Pair(endPosition, SOUTH), Pair(endPosition, WEST), Pair(endPosition, NORTH)), setOf()).size.toString()
 }
 
-tailrec fun dijkstra2(queue: PriorityQueue<Pair<Point, Pair<Int, Directions>>>, endPosition: Point, prevNodes: Map<Pair<Point, Directions>, Pair<Int, Set<Pair<Point, Directions>>>>): Map<Pair<Point, Directions>, Set<Pair<Point, Directions>>> {
+tailrec fun dijkstra2(queue: PriorityQueue<Pair<Point, Pair<Int, Directions4>>>, endPosition: Point, prevNodes: Map<Pair<Point, Directions4>, Pair<Int, Set<Pair<Point, Directions4>>>>): Map<Pair<Point, Directions4>, Set<Pair<Point, Directions4>>> {
     val (currentPosition, currentInfo) = queue.peek()
     val (currentScore, currentDirection) = currentInfo
     return if (currentPosition == endPosition) return prevNodes.map { (k, v) -> k to v.second }.toMap()
@@ -117,7 +117,7 @@ tailrec fun dijkstra2(queue: PriorityQueue<Pair<Point, Pair<Int, Directions>>>, 
     }
 }
 
-tailrec fun Map<Pair<Point, Directions>, Set<Pair<Point, Directions>>>.countPoints(currentPositions: Set<Pair<Point, Directions>>, previousPositions: Set<Pair<Point, Directions>>): Set<Point> {
+tailrec fun Map<Pair<Point, Directions4>, Set<Pair<Point, Directions4>>>.countPoints(currentPositions: Set<Pair<Point, Directions4>>, previousPositions: Set<Pair<Point, Directions4>>): Set<Point> {
     return if (currentPositions.isEmpty()) previousPositions.map { it.first }.toSet()
     else this.countPoints(currentPositions.flatMap { this[it]!! }.toSet() - previousPositions, previousPositions + currentPositions)
 }

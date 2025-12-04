@@ -1,10 +1,10 @@
 package year2024.day15
 
-import Directions
-import Directions.EAST
-import Directions.NORTH
-import Directions.SOUTH
-import Directions.WEST
+import Directions4
+import Directions4.EAST
+import Directions4.NORTH
+import Directions4.SOUTH
+import Directions4.WEST
 import Point
 import plus
 
@@ -22,7 +22,7 @@ fun solveTask1(input: String): String {
         }
     }
 
-    val moves = preMoves.fold(listOf<Directions>()) { mvs, char ->
+    val moves = preMoves.fold(listOf<Directions4>()) { mvs, char ->
         when (char) {
             '<' -> mvs + WEST
             '>' -> mvs + EAST
@@ -47,7 +47,7 @@ fun solveTask1(input: String): String {
     }.second.sumOf { it.first.toLong() * 100L + it.second.toLong() }.toString()
 }
 
-tailrec fun moveBox(position: Point, direction: Directions, obstacles: List<Point>, boxes: List<Point>): Point {
+tailrec fun moveBox(position: Point, direction: Directions4, obstacles: List<Point>, boxes: List<Point>): Point {
     return when (val newPosition = position + direction.move) {
         in obstacles -> Point(-1, -1)
         in boxes -> moveBox(newPosition, direction, obstacles, boxes)
@@ -69,7 +69,7 @@ fun solveTask2(input: String): String {
         }
     }
 
-    val moves = preMoves.fold(listOf<Directions>()) { mvs, char ->
+    val moves = preMoves.fold(listOf<Directions4>()) { mvs, char ->
         when (char) {
             '<' -> mvs + WEST
             '>' -> mvs + EAST
@@ -100,7 +100,7 @@ fun solveTask2(input: String): String {
     }.second.sumOf { it.first.first.toLong() * 100L + it.first.second.toLong() }.toString()
 }
 
-fun moveBigBox(position: Pair<Point, Point>, direction: Directions, obstacles: List<Point>, boxes: List<Pair<Point, Point>>): Pair<Boolean, List<Pair<Point, Point>>> {
+fun moveBigBox(position: Pair<Point, Point>, direction: Directions4, obstacles: List<Point>, boxes: List<Pair<Point, Point>>): Pair<Boolean, List<Pair<Point, Point>>> {
     val newPositions = Pair(position.first + direction.move, position.second + direction.move)
     val (canMoveFirst, interimBoxes) = when (val firstPosition = newPositions.first) {
         in boxes.map { it.first } -> moveBigBox(newPositions, direction, obstacles, boxes)

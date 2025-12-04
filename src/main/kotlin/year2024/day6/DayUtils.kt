@@ -1,7 +1,7 @@
 package year2024.day6
 
-import Directions
-import Directions.NORTH
+import Directions4
+import Directions4.NORTH
 import Point
 import plus
 
@@ -46,4 +46,4 @@ fun checkObstacle(map: List<String>, obstacle: Point, guardX: Int, guardY: Int):
     }.dropWhile { map.getOrNull(it.third.point.first)?.getOrNull(it.third.point.second) != null }.first().first
 }
 
-data class DirectionedPoint(val point: Point, val direction: Directions)
+data class DirectionedPoint(val point: Point, val direction: Directions4)

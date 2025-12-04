@@ -1,9 +1,9 @@
 package year2024.day10
 
-import Directions.EAST
-import Directions.NORTH
-import Directions.SOUTH
-import Directions.WEST
+import Directions4.EAST
+import Directions4.NORTH
+import Directions4.SOUTH
+import Directions4.WEST
 import Point
 import plus
 

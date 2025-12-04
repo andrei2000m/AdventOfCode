@@ -1,10 +1,10 @@
 package year2024.day12
 
-import Directions
-import Directions.EAST
-import Directions.NORTH
-import Directions.SOUTH
-import Directions.WEST
+import Directions4
+import Directions4.EAST
+import Directions4.NORTH
+import Directions4.SOUTH
+import Directions4.WEST
 import Point
 import plus
 
@@ -34,7 +34,7 @@ fun solveTask2(input: String): String {
     }.first.toString()
 }
 
-fun Point.visit2(grid: List<String>, perimeterMap: List<List<List<Directions>>>, visited: List<Point>): Triple<Long, Long, List<Point>> {
+fun Point.visit2(grid: List<String>, perimeterMap: List<List<List<Directions4>>>, visited: List<Point>): Triple<Long, Long, List<Point>> {
     val (x, y) = this
     val char = grid[x][y]
 
@@ -67,7 +67,7 @@ fun Point.visit2(grid: List<String>, perimeterMap: List<List<List<Directions>>>,
     return Triple(areaNorth + areaSouth + areaEast + areaWest + 1, perimeterNorth + perimeterSouth + perimeterWest + perimeterEast + borderNorth + borderSouth + borderWest + borderEast, visitedWest)
 }
 
-fun visitedBorder(point: Point, char: Char, grid: List<String>, direction: Directions, borderDirection: Directions, visited: List<Point>, perimeterMap: List<List<List<Directions>>>): Boolean {
+fun visitedBorder(point: Point, char: Char, grid: List<String>, direction: Directions4, borderDirection: Directions4, visited: List<Point>, perimeterMap: List<List<List<Directions4>>>): Boolean {
     if (grid[point.first][point.second] != char) return false
     if (visited.contains(point) && perimeterMap[point.first][point.second].contains(borderDirection)) return true
     val newPoint = point + direction.move
@@ -75,7 +75,7 @@ fun visitedBorder(point: Point, char: Char, grid: List<String>, direction: Direc
     return false
 }
 
-fun perimeter2(coords: Point, grid: List<String>): List<Directions> {
+fun perimeter2(coords: Point, grid: List<String>): List<Directions4> {
     val (x, y) = coords
     val char = grid[x][y]
 

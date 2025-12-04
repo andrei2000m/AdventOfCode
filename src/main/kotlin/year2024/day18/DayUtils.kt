@@ -1,6 +1,6 @@
 package year2024.day18
 
-import Directions
+import Directions4
 import Point
 import PriorityQueue
 import plus
@@ -37,10 +37,10 @@ tailrec fun dijkstra(queue: PriorityQueue<Pair<Point, Int>>, endPosition: Point)
     val (currentPosition, currentScore) = queue.peek()
     return if (currentPosition == endPosition || currentScore == Int.MAX_VALUE) currentScore
     else {
-        val northPos = currentPosition + Directions.NORTH.move
-        val eastPos = currentPosition + Directions.EAST.move
-        val southPos = currentPosition + Directions.SOUTH.move
-        val westPos = currentPosition + Directions.WEST.move
+        val northPos = currentPosition + Directions4.NORTH.move
+        val eastPos = currentPosition + Directions4.EAST.move
+        val southPos = currentPosition + Directions4.SOUTH.move
+        val westPos = currentPosition + Directions4.WEST.move
 
         val neighbours = queue.filter { it.first == northPos || it.first == eastPos || it.first == southPos || it.first == westPos }
         val nextNeighbours = neighbours.map { Pair(it.first, currentScore + 1) }

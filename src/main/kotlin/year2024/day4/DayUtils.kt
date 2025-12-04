@@ -1,5 +1,7 @@
 package year2024.day4
 
+import indicesOf
+
 fun solveTask1(input: String): String {
     val grid = input.lines().map { line -> line.toList() }
     val lineLength = grid[0].size
@@ -35,5 +37,3 @@ fun Char.findWord(grid: List<List<Char>>, coords: Pair<Int, Int>, leftover: Stri
         if (leftover.isEmpty()) true
         else leftover[0].findWord(grid, Pair(coords.first + direction.first, coords.second + direction.second), leftover.drop(1), direction)
     else false
-
-fun <T> List<T>.indicesOf(element: T): List<Int> = this.mapIndexedNotNull { index, t -> index.takeIf { t == element } }
