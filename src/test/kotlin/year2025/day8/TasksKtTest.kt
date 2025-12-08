@@ -12,7 +12,7 @@ class TasksKtTest {
         val input = readInput(year = 2025, day = 8, task = 1, test = true)
         val expected = readExpected(year = 2025, day = 8, task = 1)
 
-        val actual = solveTask1(input)
+        val actual = solveTask1(input, 10)
 
         assertEquals(expected, actual)
     }

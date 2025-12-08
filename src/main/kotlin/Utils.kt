@@ -1,6 +1,8 @@
 import kotlin.io.path.Path
 import kotlin.io.path.readText
 import kotlin.math.abs
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 fun readInput(year: Int, day: Int, task: Int, test: Boolean = false): String =
     Path("src/${if (test) "test" else "main"}/resources/year${year}/day${day}/task${task}.txt").readText()
@@ -11,6 +13,8 @@ fun String.split(separators: List<Regex>): List<String> = separators.fold(listOf
 
 fun <T> List<T>.toPair() = Pair(this[0], this[1])
 
+fun <T> List<T>.toTriple() = Triple(this[0], this[1], this[2])
+
 fun String.toLongOrZero() = try { this.toLong() } catch (e: NumberFormatException) { 0 }
 
 typealias Point = Pair<Int, Int>
@@ -20,6 +24,10 @@ operator fun Point.plus(other: Point): Point = Point(this.first + other.first, t
 operator fun Point.minus(other: Point): Point = Point(this.first - other.first, this.second - other.second)
 
 fun distance(p1: Point, p2: Point): Int = abs(p1.first - p2.first) + abs(p1.second - p2.second)
+
+fun distance3D(p1: Triple<Long, Long, Long>, p2: Triple<Long, Long, Long>) = sqrt(
+    (p1.first - p2.first).toDouble().pow(2) + (p1.second - p2.second).toDouble().pow(2) + (p1.third - p2.third).toDouble().pow(2)
+)
 
 fun <T> List<T>.indicesOf(element: T): List<Int> = this.mapIndexedNotNull { index, t -> index.takeIf { t == element } }
 

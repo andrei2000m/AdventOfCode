@@ -1,4 +1,4 @@
-package year2025.day8
+package year2025.day9
 
 import println
 import readInput
@@ -9,13 +9,13 @@ fun main() {
 }
 
 fun task1() {
-    val input = readInput(year = 2025, day = 8, task = 1)
-    val result = solveTask1(input, 1000)
+    val input = readInput(year = 2025, day = 9, task = 1)
+    val result = solveTask1(input)
     result.println()
 }
 
 fun task2() {
-    val input = readInput(year = 2025, day = 8, task = 2)
+    val input = readInput(year = 2025, day = 9, task = 2)
     val result = solveTask2(input)
     result.println()
 }
